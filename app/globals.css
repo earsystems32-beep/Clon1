@@ -1,0 +1,440 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* REDvitto36 Premium Dark Theme - Semantic Tokens */
+:root {
+  /* Light mode (fallback) */
+  --background: oklch(0.98 0.01 290);
+  --foreground: oklch(0.2 0.1 290);
+  --card: oklch(0.99 0.005 290);
+  --card-foreground: oklch(0.2 0.1 290);
+  --popover: oklch(0.99 0.005 290);
+  --popover-foreground: oklch(0.2 0.1 290);
+  --primary: oklch(0.85 0.15 85);
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.95 0.02 290);
+  --secondary-foreground: oklch(0.2 0.1 290);
+  --muted: oklch(0.96 0.01 290);
+  --muted-foreground: oklch(0.5 0.05 290);
+  --accent: oklch(0.92 0.03 290);
+  --accent-foreground: oklch(0.2 0.1 290);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.85 0.15 85 / 0.2);
+  --input: oklch(0.96 0.01 290);
+  --ring: oklch(0.85 0.15 85);
+  --radius: 1rem;
+
+  /* Added new semantic tokens for premium theme */
+  --surface: oklch(0.99 0.005 290);
+  --surface-2: oklch(0.96 0.01 290);
+  --primary-2: oklch(0.82 0.15 75);
+  --primary-3: oklch(0.88 0.12 80);
+  --border-strong: oklch(0.85 0.15 85 / 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.35);
+  --glass-tint: rgba(255, 195, 0, 0.1);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  /* Updated to black and dark gray theme instead of violet */
+  /* Premium Dark Theme - REDvitto36 - Black & Gold */
+  /* Background: Pure black #000000 */
+  --background: #000000;
+  /* Foreground: Soft warm gray #E9E9E9 for elegant readability */
+  --foreground: #e9e9e9;
+  /* Card/Surface: Dark gray #1a1a1a */
+  --card: #1a1a1a;
+  --card-foreground: #e9e9e9;
+  /* Popover: Same as card */
+  --popover: #1a1a1a;
+  --popover-foreground: #e9e9e9;
+  /* Changed primary color from gold #FFC300 to orange #FF8C00 */
+  --primary: #ff8c00;
+  /* Primary foreground: Deep black #12100A for maximum contrast on gold */
+  --primary-foreground: #12100a;
+  /* Secondary: Lighter dark gray #2a2a2a for secondary elements */
+  --secondary: #2a2a2a;
+  --secondary-foreground: #e9e9e9;
+  /* Muted: Mid-tone dark gray #2a2a2a with soft text */
+  --muted: #2a2a2a;
+  --muted-foreground: rgba(233, 233, 233, 0.72);
+  /* Accent: Medium dark gray #333333 */
+  --accent: #333333;
+  --accent-foreground: #e9e9e9;
+  /* Destructive: Red for errors */
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: #ffffff;
+  /* Border: Light gray-gold rgba(200,180,120,0.3) */
+  --border: rgba(200, 180, 120, 0.3);
+  /* Input: Elevated surface for inputs #2a2a2a */
+  --input: #2a2a2a;
+  /* Changed ring color from gold #FFC300 to orange #FF8C00 */
+  --ring: #ff8c00;
+
+  /* New semantic tokens for premium theme */
+  /* Surface: Primary panel color #1a1a1a */
+  --surface: #1a1a1a;
+  /* Surface-2: Hover/raised state (more elevated) #2a2a2a */
+  --surface-2: #2a2a2a;
+  /* Primary-2: Mid gold #FFB800 for gradients */
+  --primary-2: #ffb800;
+  /* Primary-3: Highlight gold #FFD65C */
+  --primary-3: #ffd65c;
+  /* Border-strong: rgba(200,180,120,0.5) for emphasized borders */
+  --border-strong: rgba(200, 180, 120, 0.5);
+  /* Shadow: Deep diffuse shadow rgba(0,0,0,0.45) */
+  --shadow: rgba(0, 0, 0, 0.45);
+  /* Glass-highlight: rgba(255,255,255,0.35) for internal shine */
+  --glass-highlight: rgba(255, 255, 255, 0.35);
+  /* Changed glass-tint from gold to orange rgba(255,140,0,0.10) */
+  --glass-tint: rgba(255, 140, 0, 0.1);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+.light {
+  /* Light mode (when explicitly toggled) */
+  --background: oklch(0.98 0.01 290);
+  --foreground: oklch(0.2 0.1 290);
+  --card: oklch(0.99 0.005 290);
+  --card-foreground: oklch(0.2 0.1 290);
+  --popover: oklch(0.99 0.005 290);
+  --popover-foreground: oklch(0.2 0.1 290);
+  --primary: oklch(0.85 0.15 85);
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.95 0.02 290);
+  --secondary-foreground: oklch(0.2 0.1 290);
+  --muted: oklch(0.96 0.01 290);
+  --muted-foreground: oklch(0.5 0.05 290);
+  --accent: oklch(0.92 0.03 290);
+  --accent-foreground: oklch(0.2 0.1 290);
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.85 0.15 85 / 0.2);
+  --input: oklch(0.96 0.01 290);
+  --ring: oklch(0.85 0.15 85);
+  --surface: oklch(0.99 0.005 290);
+  --surface-2: oklch(0.96 0.01 290);
+  --primary-2: oklch(0.82 0.15 75);
+  --primary-3: oklch(0.88 0.12 80);
+  --border-strong: oklch(0.85 0.15 85 / 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.35);
+  --glass-tint: rgba(255, 195, 0, 0.1);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+@theme inline {
+  /* Updated font variables to use CSS variables from Next.js font loader */
+  --font-sans: var(--font-geist-sans), "Geist", "Geist Fallback", system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), "Geist Mono", "Geist Mono Fallback", monospace;
+
+  /* Updated color mappings to use new semantic tokens */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Added new color mappings */
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-primary-2: var(--primary-2);
+  --color-primary-3: var(--primary-3);
+  --color-border-strong: var(--border-strong);
+  --color-shadow: var(--shadow);
+  --color-glass-highlight: var(--glass-highlight);
+  --color-glass-tint: var(--glass-tint);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  /* Added overscroll-behavior and proper height rules for mobile scroll fix */
+  html {
+    overscroll-behavior: none;
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Updated radial gradient to use pure black background */
+    /* Premium background with radial gradient - pure black with subtle dark gray */
+    background: radial-gradient(120% 120% at 50% 100%, #0a0a0a 0%, #000000 100%);
+    background-attachment: fixed;
+    /* Proper height for mobile: auto with min-height using svh */
+    height: auto;
+    min-height: 100svh;
+    overscroll-behavior: none;
+    /* Remove margin to prevent collapsed margin issues */
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Subtle text shadow for titles for contrast */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-shadow: 0 1px 2px var(--shadow);
+  }
+}
+
+/* Enhanced texture overlay with noise pattern and vignette */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Noise/grain texture with very low opacity */
+  /* Noise pattern */
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E"),
+    /* Soft vignette - pure black, no tint */
+    radial-gradient(ellipse at center, transparent 0%, transparent 60%, rgba(0, 0, 0, 0.12) 100%);
+  opacity: 0.06;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Liquid Glass effect for primary buttons - Enhanced 3D Premium Design */
+.btn-liquid-glass {
+  position: relative;
+  /* Changed from gold gradient to orange gradient */
+  /* Enhanced gradient from #FFB800 (bright orange top) to #FF8C00 (mid orange) to #D97706 (dark orange bottom) for more depth */
+  background: linear-gradient(180deg, #ffb800 0%, #ff8c00 45%, #d97706 100%);
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+  /* Updated border color to orange tint */
+  /* Stronger border with orange tint for metallic frame */
+  border: 1.5px solid rgba(255, 184, 0, 0.6);
+  /* Updated shadows to match orange theme */
+  /* Enhanced shadows: inner shadow for relief + outer shadow for elevation */
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), inset 0 -2px 3px rgba(217, 119, 6, 0.5), 0 6px 16px
+    rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  /* Smooth transition for all properties including background-position */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-position 0.6s ease;
+  /* Changed text color from white to black for better readability */
+  color: #000000;
+  /* Changed font-weight from 600 to 700 for bolder text */
+  font-weight: 700;
+  /* Updated text shadow to work with black text - lighter shadow for subtle depth */
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Enhanced specular highlight - metallic reflection on top */
+.btn-liquid-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  /* Stronger white highlight for metallic shine */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+  border-radius: inherit;
+  filter: blur(12px);
+  opacity: 0.8;
+  pointer-events: none;
+  /* Animate the highlight on hover for liquid effect */
+  transition: all 0.4s ease;
+}
+
+/* Updated tint overlay to orange */
+/* Subtle orange tint overlay for glass effect */
+.btn-liquid-glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(255, 140, 0, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+/* Hover state: shift gradient, increase brightness, enhance glow */
+.btn-liquid-glass:hover:not(:disabled) {
+  /* Shift background position to animate gradient (liquid effect) */
+  background-position: 0% 50%;
+  /* Updated shadows to match orange theme */
+  /* Enhanced shadows for more elevation */
+  box-shadow:
+    inset 0 2px 5px rgba(255, 255, 255, 0.5),
+    inset 0 -2px 4px rgba(217, 119, 6, 0.6),
+    0 8px 24px rgba(0, 0, 0, 0.45),
+    0 4px 8px rgba(255, 140, 0, 0.3);
+  /* Slight lift for tactile feedback */
+  transform: translateY(-2px);
+  /* Increase brightness */
+  filter: brightness(1.1);
+  /* Updated border glow to orange */
+  /* Stronger border glow */
+  border-color: rgba(255, 184, 0, 0.8);
+}
+
+/* Enhanced specular highlight on hover - moves down slightly for liquid effect */
+.btn-liquid-glass:hover:not(:disabled)::before {
+  height: 50%;
+  opacity: 1;
+  filter: blur(14px);
+  transform: translateY(2px);
+}
+
+/* Active state: compress button, reduce shadow */
+.btn-liquid-glass:active:not(:disabled) {
+  transform: translateY(1px);
+  background-position: 0% 100%;
+  /* Updated shadows to match orange theme */
+  box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -1px 2px rgba(217, 119, 6, 0.4), 0 3px 8px
+    rgba(0, 0, 0, 0.4);
+  filter: brightness(0.95);
+}
+
+/* Disabled state: reduce saturation and opacity */
+.btn-liquid-glass:disabled {
+  opacity: 0.6;
+  filter: saturate(0.75) brightness(0.9);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Animated gradient background */
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Shimmer effect for gold elements */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 195, 0, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 195, 0, 0.5);
+  }
+}
+
+/* Slide down animation for toast notifications */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Ensure select dropdown appears above all other elements */
+[data-radix-popper-content-wrapper],
+[role="listbox"] {
+  z-index: 9999 !important;
+}
+
+/* Ensure focus styles are visible on select */
+select:focus,
+button:focus,
+[role="combobox"]:focus {
+  outline: 2px solid var(--border-strong);
+  outline-offset: 2px;
+}

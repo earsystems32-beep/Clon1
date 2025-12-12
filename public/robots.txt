@@ -1,0 +1,11 @@
+# Permitir acceso general al sitio
+User-agent: *
+Allow: /
+
+# Bloquear acceso al panel de administración
+Disallow: /sys32
+Disallow: /api/sys32
+
+# Bloquear archivos sensibles
+Disallow: /*.json
+Disallow: /api/
