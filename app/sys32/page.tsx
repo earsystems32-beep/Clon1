@@ -9,16 +9,12 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { Lock, LogOut, Save, Sparkles, Phone, CheckCircle2, AlertCircle, Clock, DollarSign, Users } from 'lucide-react'
+import { Lock, LogOut, Save, Sparkles, Phone, CheckCircle2, AlertCircle, Clock, DollarSign, Users } from "lucide-react"
 
 const SUPPORT_CONTACTS = [
-  { name: "Lucia — P", phone: "5493417528062" },
-  { name: "Carolina — B", phone: "5493415481923" },
-  { name: "Sofía — B", phone: "5493416198041" },
-  { name: "Milu — B", phone: "5491160340101" },
-  { name: "Sara — P", phone: "5491160340179" },
-  { name: "Joana — B", phone: "5493412796515" },
-  { name: "Mica — P", phone: "5493416605903" },
+  { name: "Linea 1", phone: "541176067205" },
+  { name: "Linea 2", phone: "541127214473" },
+  { name: "Linea 3", phone: "541166848706" },
   { name: "Otro / Personalizado", phone: "" },
 ]
 
@@ -69,12 +65,12 @@ export default function AdminPage() {
         credentials: "include",
         cache: "no-store",
       })
-      
+
       if (response.ok) {
         const data = await response.json()
         if (data.success && data.settings) {
           const settings = data.settings
-          
+
           setActiveAlias(settings.alias || "")
           setActivePhone(settings.phone || "")
           setActivePaymentType(settings.paymentType || "alias")
@@ -134,7 +130,7 @@ export default function AdminPage() {
     setIsLoading(true)
     try {
       const testPIN = pinInput.trim()
-      
+
       const response = await fetch("/api/admin/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -283,13 +279,15 @@ export default function AdminPage() {
         setActiveUserCreationEnabled(userCreationEnabled)
         setActiveTransferTimer(transferTimerNum)
         setActiveMinAmount(minAmountNum)
-        
+
         const idx = Number(selectedContactIndex)
         if (idx >= 0 && idx < SUPPORT_CONTACTS.length) {
           setActiveContactName(SUPPORT_CONTACTS[idx].name)
         }
 
-        alert("✅ Configuración guardada exitosamente en Supabase.\nLos cambios son permanentes y se reflejan en todos los dispositivos.")
+        alert(
+          "✅ Configuración guardada exitosamente en Supabase.\nLos cambios son permanentes y se reflejan en todos los dispositivos.",
+        )
       }
     } catch (error) {
       console.error("Save error:", error)
@@ -433,9 +431,7 @@ export default function AdminPage() {
                         placeholder="0"
                         className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
                       />
-                      <p className="text-xs text-purple-300/70">
-                        Monto mínimo requerido para realizar una carga
-                      </p>
+                      <p className="text-xs text-purple-300/70">Monto mínimo requerido para realizar una carga</p>
                     </div>
                   </div>
 

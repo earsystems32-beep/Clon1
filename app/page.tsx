@@ -11,6 +11,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import {
   Check,
   Copy,
+  StarsIcon,
   Crown,
   MessageCircle,
   CheckCircle,
@@ -52,7 +53,7 @@ export default function REDvitto36() {
   const [alias, setAlias] = useState("")
   const [minAmount, setMinAmount] = useState(2000)
   const [userCreationEnabled, setUserCreationEnabled] = useState(true)
-  const [phoneNumber, setPhoneNumber] = useState("543415481923")
+  const [phoneNumber, setPhoneNumber] = useState("541176067205")
   const [paymentType, setPaymentType] = useState<"alias" | "cbu">("alias")
   const [originalTimerSeconds, setOriginalTimerSeconds] = useState(30)
 
@@ -172,7 +173,7 @@ export default function REDvitto36() {
   }, [])
 
   const isPlataformaValid = useCallback((value: string) => {
-    return value === "g" || value === "z"
+    return value === "g" // Simplified platform logic to only support Ganamos
   }, [])
 
   const isFormValid = isApodoValid(apodo) && isDigitosValid(digitos) && isPlataformaValid(plataforma)
@@ -314,8 +315,7 @@ export default function REDvitto36() {
     const time = localStorage.getItem("eds_transfer_time") || "sin hora registrada"
     const montoFormateado = formatMontoArgentino(monto)
     const platform = localStorage.getItem("eds_platform") || ""
-    const platformName =
-      platform === "g" ? "https://ganamos.sbs" : platform === "z" ? "https://casinozeus.fit" : "No especificada"
+    const platformName = platform === "g" ? "https://ganamos.sbs" : "No especificada"
 
     const msg = `Hola, ya envié mi carga.\n\nUsuario: ${username}\nContraseña: ${password}\nQuiero jugar en: \n${platformName}\n\nTitular: ${titular}\nMonto: $${montoFormateado}\nHora de transferencia: ${time}\nAdjunto comprobante.`
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`
@@ -510,7 +510,7 @@ export default function REDvitto36() {
               <Card className="shadow-md backdrop-blur-md bg-card/90 border-transparent p-3 px-0">
                 <CardContent className="space-y-6 pt-12 pb-12">
                   <div className="flex justify-center">
-                    <Crown
+                    <StarsIcon
                       className="w-12 h-12 text-primary animate-pulse"
                       strokeWidth={2.5}
                       style={{
@@ -529,7 +529,7 @@ export default function REDvitto36() {
                       textShadow: "0 2px 8px rgba(217, 119, 6, 0.4)",
                     }}
                   >
-                    Casino
+                    Lux
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground font-normal text-center">
                     Creá tu usuario y empezá a jugar!
@@ -605,7 +605,6 @@ export default function REDvitto36() {
                         </SelectTrigger>
                         <SelectContent className="z-[10000]">
                           <SelectItem value="g">Ganamos</SelectItem>
-                          <SelectItem value="z">Zeus</SelectItem>
                         </SelectContent>
                       </Select>
                       {plataformaError && (
@@ -1012,7 +1011,7 @@ export default function REDvitto36() {
 
                   <div className="flex flex-col items-center gap-3 pt-2">
                     <a
-                      href="https://wa.me/543416605903?text=Hola,%20me%20contacto%20desde%20la%20página%20REDvitto36%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?"
+                      href="https://wa.me/541141624225?text=Hola,%20me%20contacto%20desde%20la%20página%20REDvitto36%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-liquid-glass max-w-[320px] min-w-[240px] w-full h-12 px-5 font-semibold text-base rounded-lg transition-all duration-200 leading-tight truncate text-black flex items-center justify-center gap-2"
