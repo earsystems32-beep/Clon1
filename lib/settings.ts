@@ -10,6 +10,8 @@ export interface Settings {
   alias: string
   phone: string
   paymentType: "alias" | "cbu"
+  bonusPercentage: number
+  bonusEnabled: boolean
 }
 
 function getSupabaseClient() {
@@ -22,12 +24,8 @@ function getSupabaseClient() {
 export async function getSettings(): Promise<Settings> {
   try {
     const supabase = getSupabaseClient()
-    
-    const { data, error } = await supabase
-      .from("settings")
-      .select("*")
-      .eq("id", 1)
-      .single()
+
+    const { data, error } = await supabase.from("settings").select("*").eq("id", 1).single()
 
     if (error) {
       console.error("[Settings] Error fetching from Supabase:", error)
@@ -45,6 +43,8 @@ export async function getSettings(): Promise<Settings> {
       alias: data.alias,
       phone: data.phone,
       paymentType: data.payment_type,
+      bonusPercentage: data.bonus_percentage ?? 25,
+      bonusEnabled: data.bonus_enabled ?? true,
     }
   } catch (error) {
     console.error("[Settings] getSettings error:", error)
@@ -52,9 +52,7 @@ export async function getSettings(): Promise<Settings> {
   }
 }
 
-export async function updateSettings(
-  updates: Partial<Settings>
-): Promise<Settings> {
+export async function updateSettings(updates: Partial<Settings>): Promise<Settings> {
   try {
     const supabase = getSupabaseClient()
 
@@ -65,13 +63,10 @@ export async function updateSettings(
     if (updates.alias !== undefined) dbUpdates.alias = updates.alias
     if (updates.phone !== undefined) dbUpdates.phone = updates.phone
     if (updates.paymentType !== undefined) dbUpdates.payment_type = updates.paymentType
+    if (updates.bonusPercentage !== undefined) dbUpdates.bonus_percentage = updates.bonusPercentage
+    if (updates.bonusEnabled !== undefined) dbUpdates.bonus_enabled = updates.bonusEnabled
 
-    const { data, error } = await supabase
-      .from("settings")
-      .update(dbUpdates)
-      .eq("id", 1)
-      .select()
-      .single()
+    const { data, error } = await supabase.from("settings").update(dbUpdates).eq("id", 1).select().single()
 
     if (error) {
       console.error("[Settings] Error updating Supabase:", error)
@@ -89,6 +84,8 @@ export async function updateSettings(
       alias: data.alias,
       phone: data.phone,
       paymentType: data.payment_type,
+      bonusPercentage: data.bonus_percentage ?? 25,
+      bonusEnabled: data.bonus_enabled ?? true,
     }
   } catch (error) {
     console.error("[Settings] updateSettings error:", error)

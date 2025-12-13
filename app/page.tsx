@@ -26,7 +26,7 @@ import {
   AlertTriangle,
 } from "lucide-react"
 
-export default function REDvitto36() {
+export default function Home() {
   const [step, setStep] = useState(1)
   const [apodo, setApodo] = useState("")
   const [digitos, setDigitos] = useState("")
@@ -49,6 +49,8 @@ export default function REDvitto36() {
   const [isBonusModalAnimating, setIsBonusModalAnimating] = useState(false)
   const [bonusAccepted, setBonusAccepted] = useState(false)
   const [timerHasStarted, setTimerHasStarted] = useState(false)
+  const [bonusPercentage, setBonusPercentage] = useState(25)
+  const [isBonusEnabled, setIsBonusEnabled] = useState(true)
 
   const [alias, setAlias] = useState("")
   const [minAmount, setMinAmount] = useState(2000)
@@ -163,6 +165,58 @@ export default function REDvitto36() {
       return () => clearInterval(interval)
     }
   }, [step, bonusAccepted])
+
+  // Fetch bonus settings and check if bonus is enabled
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const response = await fetch("/api/admin/settings", {
+          cache: "no-store",
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          if (data.success && data.settings) {
+            const settings = data.settings
+            setMinAmount(settings.minAmount)
+            // Assuming timerDuration is a new state variable to hold timerSeconds
+            setOriginalTimerSeconds(settings.timerSeconds)
+            setUserCreationEnabled(settings.createUserEnabled)
+            setAlias(settings.alias || "")
+            setPhoneNumber(settings.phone || "+541141624225")
+            setPaymentType(settings.paymentType || "alias")
+            setBonusPercentage(settings.bonusPercentage ?? 25)
+            setIsBonusEnabled(settings.bonusEnabled ?? true)
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching config:", error)
+        // Use defaults if fetch fails
+        setMinAmount(2000)
+        setOriginalTimerSeconds(30)
+        setUserCreationEnabled(true)
+        setAlias("")
+        setPhoneNumber("+541141624225")
+        setPaymentType("alias")
+        setBonusPercentage(25)
+        setIsBonusEnabled(true)
+      }
+    }
+
+    fetchConfig()
+  }, [])
+
+  useEffect(() => {
+    const isNewUser = !localStorage.getItem("hasSeenBonusModal")
+    if (isNewUser && !bonusAccepted && isBonusEnabled) {
+      const timer = setTimeout(() => {
+        setShowBonusModal(true)
+        setTimeout(() => setIsBonusModalAnimating(true), 10)
+      }, 2000)
+
+      return () => clearTimeout(timer)
+    }
+  }, [bonusAccepted, isBonusEnabled])
 
   const isApodoValid = useCallback((value: string) => {
     return /^[A-Za-zÀ-ÿ\s]+$/.test(value.trim())
@@ -356,6 +410,8 @@ export default function REDvitto36() {
     setTimeout(() => {
       setShowBonusModal(false)
       setBonusAccepted(true)
+      // Set flag to prevent showing modal again
+      localStorage.setItem("hasSeenBonusModal", "true")
     }, 300)
   }, [])
 
@@ -387,7 +443,7 @@ export default function REDvitto36() {
                 <p className="text-white">Tenemos un bono especial para vos:</p>
 
                 <div className="bg-gradient-to-br from-[#22D3EE]/20 to-[#00BFFF]/10 border-2 border-[#22D3EE]/30 rounded-xl p-6 px-6 py-3">
-                  <p className="text-3xl font-bold text-[#22D3EE] mb-2">25% Adicional</p>
+                  <p className="text-3xl font-bold text-[#22D3EE] mb-2">{bonusPercentage}% Adicional</p>
                   <p className="text-lg text-white font-semibold">¡En tu primera carga!</p>
                 </div>
 
@@ -576,7 +632,7 @@ export default function REDvitto36() {
             <div className="py-12 px-3">
               <Card className="shadow-md backdrop-blur-md bg-card/90 border-transparent p-3 px-0">
                 <CardHeader className="space-y-3 pt-3 pb-0">
-                  <CardTitle className="text-3xl text-primary font-semibold py-0">Crear Usuario</CardTitle>
+                  <CardTitle className="text-3xl text-primary font-semibold">Crear Usuario</CardTitle>
                   <CardDescription className="text-muted-foreground">Completá tus datos para continuar</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6 pb-8">

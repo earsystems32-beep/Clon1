@@ -9,7 +9,19 @@ import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
-import { Lock, LogOut, Save, Sparkles, Phone, CheckCircle2, AlertCircle, Clock, DollarSign, Users } from "lucide-react"
+import {
+  Lock,
+  LogOut,
+  Save,
+  Sparkles,
+  CheckCircle2,
+  AlertCircle,
+  Clock,
+  DollarSign,
+  Users,
+  Gift,
+  PhoneCall,
+} from "lucide-react"
 
 const SUPPORT_CONTACTS = [
   { name: "Linea 1", phone: "541176067205" },
@@ -50,9 +62,13 @@ export default function AdminPage() {
   const [userCreationEnabled, setUserCreationEnabled] = useState(true)
   const [transferTimer, setTransferTimer] = useState("30")
   const [minAmount, setMinAmount] = useState("2000")
+  const [bonusPercentage, setBonusPercentage] = useState("25")
+  const [bonusEnabled, setBonusEnabled] = useState(true)
   const [activeUserCreationEnabled, setActiveUserCreationEnabled] = useState(true)
   const [activeTransferTimer, setActiveTransferTimer] = useState(30)
   const [activeMinAmount, setActiveMinAmount] = useState(2000)
+  const [activeBonusPercentage, setActiveBonusPercentage] = useState(25)
+  const [activeBonusEnabled, setActiveBonusEnabled] = useState(true)
   const [adminPin, setAdminPin] = useState("") // Store PIN for config saves
 
   useEffect(() => {
@@ -77,12 +93,16 @@ export default function AdminPage() {
           setActiveUserCreationEnabled(settings.createUserEnabled ?? true)
           setActiveTransferTimer(settings.timerSeconds ?? 30)
           setActiveMinAmount(settings.minAmount ?? 2000)
+          setActiveBonusPercentage(settings.bonusPercentage ?? 25)
+          setActiveBonusEnabled(settings.bonusEnabled ?? true)
 
           setAlias(settings.alias || "")
           setPaymentType(settings.paymentType || "alias")
           setUserCreationEnabled(settings.createUserEnabled ?? true)
           setTransferTimer(String(settings.timerSeconds ?? 30))
           setMinAmount(String(settings.minAmount ?? 2000))
+          setBonusPercentage(String(settings.bonusPercentage ?? 25))
+          setBonusEnabled(settings.bonusEnabled ?? true)
 
           if (settings.phone) {
             const idx = SUPPORT_CONTACTS.findIndex((c) => c.phone === settings.phone)
@@ -248,6 +268,12 @@ export default function AdminPage() {
       return
     }
 
+    const bonusPercentageNum = Number(bonusPercentage)
+    if (isNaN(bonusPercentageNum) || bonusPercentageNum < 0 || bonusPercentageNum > 100) {
+      alert("El porcentaje de bono debe estar entre 0 y 100")
+      return
+    }
+
     try {
       const response = await fetch("/api/admin/settings", {
         method: "POST",
@@ -262,6 +288,8 @@ export default function AdminPage() {
           createUserEnabled: userCreationEnabled,
           timerSeconds: transferTimerNum,
           minAmount: minAmountNum,
+          bonusPercentage: bonusPercentageNum,
+          bonusEnabled: bonusEnabled,
           pin: adminPin,
         }),
       })
@@ -279,6 +307,8 @@ export default function AdminPage() {
         setActiveUserCreationEnabled(userCreationEnabled)
         setActiveTransferTimer(transferTimerNum)
         setActiveMinAmount(minAmountNum)
+        setActiveBonusPercentage(bonusPercentageNum)
+        setActiveBonusEnabled(bonusEnabled)
 
         const idx = Number(selectedContactIndex)
         if (idx >= 0 && idx < SUPPORT_CONTACTS.length) {
@@ -417,7 +447,7 @@ export default function AdminPage() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="min-amount" className="text-base text-purple-100/90 font-medium">
-                        Monto mínimo de carga ($)
+                        Monto mínimo de transferencia (ARS)
                       </Label>
                       <Input
                         id="min-amount"
@@ -425,13 +455,63 @@ export default function AdminPage() {
                         inputMode="numeric"
                         value={minAmount}
                         onChange={(e) => {
-                          const value = e.target.value.replace(/\D/g, "")
-                          setMinAmount(value)
+                          const value = e.target.value
+                          if (/^\d*$/.test(value)) {
+                            setMinAmount(value)
+                          }
                         }}
-                        placeholder="0"
-                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
+                        placeholder="2000"
+                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white"
                       />
-                      <p className="text-xs text-purple-300/70">Monto mínimo requerido para realizar una carga</p>
+                      <p className="text-xs text-purple-300/70">
+                        Transferencias por debajo de este monto serán rechazadas
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3 p-4 rounded-lg bg-purple-900/30 border border-purple-500/20">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Gift className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Bono de bienvenida</h3>
+                    </div>
+
+                    <div className="flex items-center justify-between mb-4">
+                      <Label htmlFor="bonus-toggle" className="text-base text-purple-100/90 font-medium">
+                        Activar bono de primera carga
+                      </Label>
+                      <Switch
+                        id="bonus-toggle"
+                        checked={bonusEnabled}
+                        onCheckedChange={setBonusEnabled}
+                        className="data-[state=checked]:bg-cyan-500"
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="bonus-percentage" className="text-base text-purple-100/90 font-medium">
+                        Porcentaje de bono (%)
+                      </Label>
+                      <Input
+                        id="bonus-percentage"
+                        type="text"
+                        inputMode="numeric"
+                        value={bonusPercentage}
+                        onChange={(e) => {
+                          const value = e.target.value
+                          if (/^\d*$/.test(value)) {
+                            const num = Number(value)
+                            if (value === "" || (num >= 0 && num <= 100)) {
+                              setBonusPercentage(value)
+                            }
+                          }
+                        }}
+                        placeholder="25"
+                        disabled={!bonusEnabled}
+                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white disabled:opacity-50 disabled:cursor-not-allowed"
+                      />
+                      <p className="text-xs text-purple-300/70">
+                        Porcentaje adicional que se mostrará en el modal de felicitaciones (0-100%)
+                      </p>
                     </div>
                   </div>
 
@@ -508,8 +588,8 @@ export default function AdminPage() {
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Phone className="w-5 h-5 text-cyan-400" />
-                      <h3 className="text-lg font-semibold text-cyan-300">Contacto de soporte</h3>
+                      <PhoneCall className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Soporte</h3>
                     </div>
 
                     <div className="space-y-2">
@@ -601,6 +681,18 @@ export default function AdminPage() {
                       <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Monto mínimo:</Label>
                       <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
                         <span className="text-sm text-cyan-100">${activeMinAmount}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Bono activado:</Label>
+                      <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                        <span className="text-sm text-cyan-100">{activeBonusEnabled ? "Sí" : "No"}</span>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Porcentaje de bono:</Label>
+                      <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                        <span className="text-sm text-cyan-100">{activeBonusPercentage}%</span>
                       </div>
                     </div>
                     {activeAlias && (
