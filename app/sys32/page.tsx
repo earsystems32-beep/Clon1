@@ -305,7 +305,7 @@ export default function AdminPage() {
       />
 
       <div className="fixed top-20 left-10 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl animate-[float_8s_ease-in-out_infinite]" />
-      <div className="fixed bottom-20 right-10 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
+      <div className="fixed bottom-20 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl animate-[float_10s_ease-in-out_infinite_2s]" />
 
       <div className="relative z-10 p-4 md:p-8">
         <div className="mx-auto max-w-2xl">
@@ -313,8 +313,8 @@ export default function AdminPage() {
             <Card className="border border-purple-500/30 shadow-2xl backdrop-blur-md bg-gradient-to-br from-purple-950/90 to-purple-900/85">
               <CardHeader className="space-y-3">
                 <div className="flex items-center gap-2">
-                  <Lock className="w-6 h-6 text-amber-400" />
-                  <CardTitle className="text-3xl bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent font-semibold">
+                  <Lock className="w-6 h-6 text-cyan-400" />
+                  <CardTitle className="text-3xl bg-gradient-to-r from-cyan-300 via-sky-400 to-cyan-300 bg-clip-text text-transparent font-semibold">
                     Acceso Administrador
                   </CardTitle>
                 </div>
@@ -335,14 +335,14 @@ export default function AdminPage() {
                     onKeyDown={(e) => e.key === "Enter" && !isLoading && handleLogin()}
                     placeholder="Ingresá el PIN"
                     disabled={isLoading}
-                    className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
+                    className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
                   />
                 </div>
                 <div className="flex justify-center">
                   <Button
                     onClick={handleLogin}
                     disabled={isLoading}
-                    className="max-w-[320px] w-full h-12 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-600 text-black font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
+                    className="max-w-[320px] w-full h-12 bg-gradient-to-r from-cyan-500 via-sky-500 to-cyan-500 hover:from-cyan-600 hover:via-sky-600 hover:to-cyan-600 text-black font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50"
                   >
                     {isLoading ? "Verificando..." : "Entrar"}
                   </Button>
@@ -354,8 +354,8 @@ export default function AdminPage() {
               <Card className="border border-purple-500/30 shadow-2xl backdrop-blur-md bg-gradient-to-br from-purple-950/90 to-purple-900/85">
                 <CardHeader className="space-y-3">
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-6 h-6 text-amber-400" />
-                    <CardTitle className="text-3xl bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent font-semibold">
+                    <Sparkles className="w-6 h-6 text-cyan-400" />
+                    <CardTitle className="text-3xl bg-gradient-to-r from-cyan-300 via-sky-400 to-cyan-300 bg-clip-text text-transparent font-semibold">
                       Configuración
                     </CardTitle>
                   </div>
@@ -364,8 +364,8 @@ export default function AdminPage() {
                 <CardContent className="space-y-6 pb-8">
                   <div className="space-y-3 p-4 rounded-lg bg-purple-900/30 border border-purple-500/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Users className="w-5 h-5 text-amber-400" />
-                      <h3 className="text-lg font-semibold text-amber-300">Control de acceso</h3>
+                      <Users className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Control de acceso</h3>
                     </div>
                     <div className="flex items-center justify-between">
                       <Label htmlFor="user-creation-toggle" className="text-base text-purple-100/90 font-medium">
@@ -375,7 +375,7 @@ export default function AdminPage() {
                         id="user-creation-toggle"
                         checked={userCreationEnabled}
                         onCheckedChange={setUserCreationEnabled}
-                        className="data-[state=checked]:bg-amber-500"
+                        className="data-[state=checked]:bg-cyan-500"
                       />
                     </div>
                     <p className="text-xs text-purple-300/70">
@@ -385,8 +385,8 @@ export default function AdminPage() {
 
                   <div className="space-y-3 p-4 rounded-lg bg-purple-900/30 border border-purple-500/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <Clock className="w-5 h-5 text-amber-400" />
-                      <h3 className="text-lg font-semibold text-amber-300">Temporizador</h3>
+                      <Clock className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Temporizador</h3>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="transfer-timer" className="text-base text-purple-100/90 font-medium">
@@ -402,7 +402,7 @@ export default function AdminPage() {
                           setTransferTimer(value)
                         }}
                         placeholder="30"
-                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
+                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
                       />
                       <p className="text-xs text-purple-300/70">
                         Tiempo de espera en la sección "Esperando transferencia" (0-300 segundos)
@@ -412,8 +412,8 @@ export default function AdminPage() {
 
                   <div className="space-y-3 p-4 rounded-lg bg-purple-900/30 border border-purple-500/20">
                     <div className="flex items-center gap-2 mb-2">
-                      <DollarSign className="w-5 h-5 text-amber-400" />
-                      <h3 className="text-lg font-semibold text-amber-300">Monto mínimo</h3>
+                      <DollarSign className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Monto mínimo</h3>
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="min-amount" className="text-base text-purple-100/90 font-medium">
@@ -429,7 +429,7 @@ export default function AdminPage() {
                           setMinAmount(value)
                         }}
                         placeholder="0"
-                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
+                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
                       />
                       <p className="text-xs text-purple-300/70">Monto mínimo requerido para realizar una carga</p>
                     </div>
@@ -450,7 +450,7 @@ export default function AdminPage() {
                               setCbuError("")
                               setAlias("")
                             }}
-                            className="w-4 h-4 text-amber-400 border-purple-500/30 focus:ring-amber-400/50"
+                            className="w-4 h-4 text-cyan-400 border-purple-500/30 focus:ring-cyan-400/50"
                           />
                           <span className="text-purple-100/90">Alias</span>
                         </label>
@@ -465,7 +465,7 @@ export default function AdminPage() {
                               setCbuError("")
                               setAlias("")
                             }}
-                            className="w-4 h-4 text-amber-400 border-purple-500/30 focus:ring-amber-400/50"
+                            className="w-4 h-4 text-cyan-400 border-purple-500/30 focus:ring-cyan-400/50"
                           />
                           <span className="text-purple-100/90">CBU</span>
                         </label>
@@ -476,7 +476,7 @@ export default function AdminPage() {
                             alias.length === 22
                               ? "text-green-400"
                               : alias.length > 0
-                                ? "text-amber-400"
+                                ? "text-cyan-400"
                                 : "text-purple-300/50"
                           }`}
                         >
@@ -494,7 +494,7 @@ export default function AdminPage() {
                       value={alias}
                       onChange={handleAliasChange}
                       placeholder={paymentType === "alias" ? "Ejemplo: DLHogar.mp" : "Ejemplo: 0000003100010000000000"}
-                      className={`h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50 ${
+                      className={`h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50 ${
                         cbuError ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/50" : ""
                       }`}
                     />
@@ -508,8 +508,8 @@ export default function AdminPage() {
 
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 mb-2">
-                      <Phone className="w-5 h-5 text-amber-400" />
-                      <h3 className="text-lg font-semibold text-amber-300">Contacto de soporte</h3>
+                      <Phone className="w-5 h-5 text-cyan-400" />
+                      <h3 className="text-lg font-semibold text-cyan-300">Contacto de soporte</h3>
                     </div>
 
                     <div className="space-y-2">
@@ -519,7 +519,7 @@ export default function AdminPage() {
                       <Select value={selectedContactIndex} onValueChange={handleContactChange}>
                         <SelectTrigger
                           id="cfg-support-select"
-                          className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white"
+                          className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white"
                         >
                           <SelectValue placeholder="Seleccioná un contacto…" />
                         </SelectTrigger>
@@ -545,7 +545,7 @@ export default function AdminPage() {
                         onChange={(e) => setSupportPhone(sanitizePhone(e.target.value))}
                         readOnly={!isPhoneEditable}
                         placeholder="Número de teléfono"
-                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-amber-400 focus:ring-amber-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
+                        className="h-12 text-base bg-purple-950/50 border-purple-500/30 focus:border-cyan-400 focus:ring-cyan-400/50 transition-all duration-200 text-white placeholder:text-purple-300/50"
                       />
                     </div>
                   </div>
@@ -555,7 +555,7 @@ export default function AdminPage() {
                       id="btn-save-cfg"
                       onClick={handleSave}
                       disabled={paymentType === "cbu" && alias.length !== 22}
-                      className="flex-1 h-12 bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-600 text-black font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="flex-1 h-12 bg-gradient-to-r from-cyan-500 via-sky-500 to-cyan-500 hover:from-cyan-600 hover:via-sky-600 hover:to-cyan-600 text-black font-semibold text-base shadow-lg hover:shadow-xl transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <Save className="w-4 h-4 mr-2" />
                       Guardar cambios
@@ -563,7 +563,7 @@ export default function AdminPage() {
                     <Button
                       onClick={handleLogout}
                       variant="outline"
-                      className="flex-1 h-12 border-purple-500/30 hover:bg-purple-900/30 hover:border-amber-400 transition-all duration-200 text-purple-200 bg-transparent"
+                      className="flex-1 h-12 border-purple-500/30 hover:bg-purple-900/30 hover:border-cyan-400 transition-all duration-200 text-purple-200 bg-transparent"
                     >
                       <LogOut className="w-4 h-4 mr-2" />
                       Cerrar sesión
@@ -573,51 +573,51 @@ export default function AdminPage() {
               </Card>
 
               {(activeAlias || activePhone) && (
-                <Card className="border border-amber-500/30 shadow-lg backdrop-blur-md bg-gradient-to-br from-amber-950/80 to-amber-900/75">
+                <Card className="border border-cyan-500/30 shadow-lg backdrop-blur-md bg-gradient-to-br from-cyan-950/80 to-cyan-900/75">
                   <CardHeader className="space-y-1 pb-2 pt-4">
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-amber-400" />
-                      <CardTitle className="text-lg bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 bg-clip-text text-transparent font-semibold">
+                      <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                      <CardTitle className="text-lg bg-gradient-to-r from-cyan-300 via-sky-400 to-cyan-300 bg-clip-text text-transparent font-semibold">
                         Configuración Activa
                       </CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent className="space-y-2 pb-4">
                     <div className="flex items-center gap-2">
-                      <Label className="text-xs text-amber-200/70 font-medium min-w-[120px]">Crear usuarios:</Label>
-                      <div className="h-8 px-3 rounded-md bg-amber-950/50 border border-amber-500/30 flex items-center flex-1">
-                        <span className="text-sm text-amber-100">
+                      <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Crear usuarios:</Label>
+                      <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                        <span className="text-sm text-cyan-100">
                           {activeUserCreationEnabled ? "Activado" : "Desactivado"}
                         </span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Label className="text-xs text-amber-200/70 font-medium min-w-[120px]">Temporizador:</Label>
-                      <div className="h-8 px-3 rounded-md bg-amber-950/50 border border-amber-500/30 flex items-center flex-1">
-                        <span className="text-sm text-amber-100">{activeTransferTimer}s</span>
+                      <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Temporizador:</Label>
+                      <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                        <span className="text-sm text-cyan-100">{activeTransferTimer}s</span>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Label className="text-xs text-amber-200/70 font-medium min-w-[120px]">Monto mínimo:</Label>
-                      <div className="h-8 px-3 rounded-md bg-amber-950/50 border border-amber-500/30 flex items-center flex-1">
-                        <span className="text-sm text-amber-100">${activeMinAmount}</span>
+                      <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Monto mínimo:</Label>
+                      <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                        <span className="text-sm text-cyan-100">${activeMinAmount}</span>
                       </div>
                     </div>
                     {activeAlias && (
                       <div className="flex items-center gap-2">
-                        <Label className="text-xs text-amber-200/70 font-medium min-w-[120px]">
+                        <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">
                           {activePaymentType === "alias" ? "Alias:" : "CBU:"}
                         </Label>
-                        <div className="h-8 px-3 rounded-md bg-amber-950/50 border border-amber-500/30 flex items-center flex-1">
-                          <span className="text-sm text-amber-100 truncate">{activeAlias}</span>
+                        <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                          <span className="text-sm text-cyan-100 truncate">{activeAlias}</span>
                         </div>
                       </div>
                     )}
                     {activePhone && (
                       <div className="flex items-center gap-2">
-                        <Label className="text-xs text-amber-200/70 font-medium min-w-[120px]">Soporte:</Label>
-                        <div className="h-8 px-3 rounded-md bg-amber-950/50 border border-amber-500/30 flex items-center flex-1">
-                          <span className="text-sm text-amber-100 truncate">{activeContactName}</span>
+                        <Label className="text-xs text-cyan-200/70 font-medium min-w-[120px]">Soporte:</Label>
+                        <div className="h-8 px-3 rounded-md bg-cyan-950/50 border border-cyan-500/30 flex items-center flex-1">
+                          <span className="text-sm text-cyan-100 truncate">{activeContactName}</span>
                         </div>
                       </div>
                     )}

@@ -381,27 +381,26 @@ export default function REDvitto36() {
             }`}
           >
             <div className="p-6 space-y-6">
-              <div className="flex items-center gap-3 justify-center">
-                <Gift className="w-8 h-8 text-[#FF8C00]" strokeWidth={2.5} />
-                <h2 className="text-2xl font-bold text-[#FF8C00]">Felicitaciones! </h2>
-              </div>
+              <div className="flex flex-col items-center gap-4">
+                <Gift className="w-8 h-8 text-[#22D3EE]" strokeWidth={2.5} />
+                <h2 className="text-2xl font-bold text-[#22D3EE]">Felicitaciones! </h2>
+                <p className="text-white">Tenemos un bono especial para vos:</p>
 
-              <div className="space-y-4 text-center">
-                <div className="bg-gradient-to-br from-[#FF8C00]/20 to-[#FFB800]/10 border-2 border-[#FF8C00]/30 rounded-xl p-6 px-6 py-3">
-                  <p className="text-3xl font-bold text-[#FF8C00] mb-2">25% Adicional</p>
+                <div className="bg-gradient-to-br from-[#22D3EE]/20 to-[#00BFFF]/10 border-2 border-[#22D3EE]/30 rounded-xl p-6 px-6 py-3">
+                  <p className="text-3xl font-bold text-[#22D3EE] mb-2">25% Adicional</p>
                   <p className="text-lg text-white font-semibold">¡En tu primera carga!</p>
                 </div>
 
                 <div className="bg-[#2a2a2a] rounded-lg p-4 border border-white/10 py-1">
                   <p className="text-sm text-white/90 leading-relaxed">
-                    Recordá, el bono <span className="font-bold text-[#FF8C00]">no forma parte del premio</span>.
+                    Recordá, el bono <span className="font-bold text-[#22D3EE]">no forma parte del premio</span>.
                   </p>
                 </div>
               </div>
 
               <button
                 onClick={closeBonusModal}
-                className="w-full h-12 bg-gradient-to-b from-[#FFB800] to-[#FF8C00] hover:from-[#FFC300] hover:to-[#FFB800] text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-base"
+                className="w-full h-12 bg-gradient-to-b from-[#22D3EE] to-[#00BFFF] hover:from-[#67E8F9] hover:to-[#22D3EE] text-black font-bold rounded-lg transition-all duration-200 shadow-lg text-base"
               >
                 Aceptar
               </button>
@@ -430,15 +429,15 @@ export default function REDvitto36() {
                   className="w-6 h-6 text-primary"
                   strokeWidth={2.5}
                   style={{
-                    filter: "drop-shadow(0 0 8px rgba(255, 140, 0, 0.5))",
+                    filter: "drop-shadow(0 0 8px rgba(34, 211, 238, 0.5))",
                   }}
                 />
-                <CardTitle className="text-2xl font-bold text-[#FF8C00]">Información y cronograma</CardTitle>
+                <CardTitle className="text-2xl font-bold text-[#22D3EE]">Información y cronograma</CardTitle>
               </div>
 
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Hourglass className="w-6 h-6 text-[#FF8C00] shrink-0 mt-1" strokeWidth={2} />
+                  <Hourglass className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
                     <h3 className="font-bold text-white mb-1">Sin cronograma de pagos</h3>
                     <p className="text-sm text-white/80 leading-relaxed">Los retiros se procesan de forma continua</p>
@@ -446,7 +445,7 @@ export default function REDvitto36() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <DollarSign className="w-6 h-6 text-[#FF8C00] shrink-0 mt-1" strokeWidth={2} />
+                  <DollarSign className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
                     <h3 className="font-bold text-white mb-1">Retiros sin límite</h3>
                     <p className="text-sm text-white/80 leading-relaxed">
@@ -456,7 +455,7 @@ export default function REDvitto36() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <CheckCircle className="w-6 h-6 text-[#FF8C00] shrink-0 mt-1" strokeWidth={2} />
+                  <CheckCircle className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
                     <h3 className="font-bold text-white mb-1">Disponibilidad inmediata</h3>
                     <p className="text-sm text-white/80 leading-relaxed">
@@ -466,7 +465,7 @@ export default function REDvitto36() {
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <AlertCircle className="w-6 h-6 text-[#FF8C00] shrink-0 mt-1" strokeWidth={2} />
+                  <AlertCircle className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
                     <h3 className="font-bold text-white mb-1">Soporte activo</h3>
                     <p className="text-sm text-white/80 leading-relaxed">
@@ -480,7 +479,7 @@ export default function REDvitto36() {
 
               <button
                 onClick={closeInfoModal}
-                className="w-full h-12 bg-gradient-to-b from-[#FFB800] to-[#FF8C00] hover:from-[#FFC300] hover:to-[#FFB800] text-white font-bold rounded-lg transition-all duration-200 shadow-lg"
+                className="w-full h-12 bg-gradient-to-b from-[#22D3EE] to-[#00BFFF] hover:from-[#67E8F9] hover:to-[#22D3EE] text-white font-bold rounded-lg transition-all duration-200 shadow-lg"
               >
                 Cerrar
               </button>
@@ -509,27 +508,28 @@ export default function REDvitto36() {
             <div className="py-12 px-3">
               <Card className="shadow-md backdrop-blur-md bg-card/90 border-transparent p-3 px-0">
                 <CardContent className="space-y-6 pt-12 pb-12">
-                  <div className="flex justify-center">
+                  <div className="flex items-center justify-center mb-4">
                     <StarsIcon
                       className="w-12 h-12 text-primary animate-pulse"
                       strokeWidth={2.5}
                       style={{
-                        filter: "drop-shadow(0 0 12px rgba(255, 140, 0, 0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
+                        filter: "drop-shadow(0 0 12px rgba(34, 211, 238, 0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4))",
                       }}
                     />
                   </div>
+                  {/* CHANGE: Changed title gradient from orange to cyan/blue */}
                   <h1
                     className="text-5xl md:text-6xl font-semibold text-center"
                     style={{
-                      background: "linear-gradient(180deg, #FFB800 0%, #FF8C00 50%, #D97706 100%)",
+                      background: "linear-gradient(180deg, #67E8F9 0%, #22D3EE 50%, #0284C7 100%)",
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text",
-                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 20px rgba(255, 140, 0, 0.3))",
-                      textShadow: "0 2px 8px rgba(217, 119, 6, 0.4)",
+                      filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3)) drop-shadow(0 0 20px rgba(34, 211, 238, 0.3))",
+                      textShadow: "0 2px 8px rgba(14, 165, 233, 0.4)",
                     }}
                   >
-                    Lux
+                    SHARK
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground font-normal text-center">
                     Creá tu usuario y empezá a jugar!
@@ -1035,21 +1035,21 @@ export default function REDvitto36() {
         )}
       </div>
 
-      <footer className="fixed bottom-0 left-0 right-0 z-20 bg-gradient-to-r from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] border-t border-[#FF8C00]/20 backdrop-blur-md">
+      <footer className="fixed bottom-0 left-0 right-0 z-20 bg-gradient-to-r from-[#0a0a0a] via-[#1a1a1a] to-[#0a0a0a] border-t border-[#22D3EE]/20 backdrop-blur-md">
         <div className="container mx-auto px-4 py-3">
           <div className="flex flex-nowrap items-center justify-center gap-x-3 sm:gap-x-6 text-[10px] sm:text-xs md:text-sm">
             <div className="flex items-center gap-1.5 sm:gap-2 text-white/80 whitespace-nowrap">
-              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF8C00] shrink-0" strokeWidth={2.5} />
+              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-[#22D3EE] shrink-0" strokeWidth={2.5} />
               <span className="font-medium">Pagos seguros</span>
             </div>
-            <span className="text-[#FF8C00]/40 hidden xs:inline">•</span>
+            <span className="text-[#22D3EE]/40 hidden xs:inline">•</span>
             <div className="flex items-center gap-1.5 sm:gap-2 text-white/80 whitespace-nowrap">
-              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF8C00] shrink-0" strokeWidth={2.5} />
+              <Users className="w-3 h-3 sm:w-4 sm:h-4 text-[#22D3EE] shrink-0" strokeWidth={2.5} />
               <span className="font-medium">+10K usuarios</span>
             </div>
-            <span className="text-[#FF8C00]/40 hidden xs:inline">•</span>
+            <span className="text-[#22D3EE]/40 hidden xs:inline">•</span>
             <div className="flex items-center gap-1.5 sm:gap-2 text-white/80 whitespace-nowrap">
-              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 text-[#FF8C00] shrink-0" strokeWidth={2.5} />
+              <AlertTriangle className="w-3 h-3 sm:w-4 sm:h-4 text-[#22D3EE] shrink-0" strokeWidth={2.5} />
               <span className="font-medium">+18 Juega responsablemente</span>
             </div>
           </div>
