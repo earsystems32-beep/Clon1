@@ -58,6 +58,7 @@ export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("541176067205")
   const [paymentType, setPaymentType] = useState<"alias" | "cbu">("alias")
   const [originalTimerSeconds, setOriginalTimerSeconds] = useState(30)
+  const [supportPhone, setSupportPhone] = useState("+541141624225")
 
   // Separated config loading to only set timer when not in use
   useEffect(() => {
@@ -83,6 +84,7 @@ export default function Home() {
             }
 
             setMinAmount(data.settings.minAmount ?? 2000)
+            setSupportPhone(data.settings.supportPhone || "+541141624225")
           }
         }
       } catch (error) {
@@ -91,8 +93,7 @@ export default function Home() {
     }
 
     loadServerConfig()
-    const interval = setInterval(loadServerConfig, 10000)
-
+    const interval = setInterval(loadServerConfig, 15000)
     return () => clearInterval(interval)
   }, [timerHasStarted])
 
@@ -179,7 +180,6 @@ export default function Home() {
           if (data.success && data.settings) {
             const settings = data.settings
             setMinAmount(settings.minAmount)
-            // Assuming timerDuration is a new state variable to hold timerSeconds
             setOriginalTimerSeconds(settings.timerSeconds)
             setUserCreationEnabled(settings.createUserEnabled)
             setAlias(settings.alias || "")
@@ -187,6 +187,7 @@ export default function Home() {
             setPaymentType(settings.paymentType || "alias")
             setBonusPercentage(settings.bonusPercentage ?? 25)
             setIsBonusEnabled(settings.bonusEnabled ?? true)
+            setSupportPhone(settings.supportPhone || "+541141624225")
           }
         }
       } catch (error) {
@@ -198,8 +199,7 @@ export default function Home() {
         setAlias("")
         setPhoneNumber("+541141624225")
         setPaymentType("alias")
-        setBonusPercentage(25)
-        setIsBonusEnabled(true)
+        setSupportPhone("+541141624225")
       }
     }
 
@@ -1067,7 +1067,7 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-3 pt-2">
                     <a
-                      href="https://wa.me/541141624225?text=Hola,%20me%20contacto%20desde%20la%20página%20REDvitto36%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?"
+                      href={`https://wa.me/${supportPhone.replace(/\+/g, "")}?text=Hola,%20me%20contacto%20desde%20la%20página%20REDvitto36%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-liquid-glass max-w-[320px] min-w-[240px] w-full h-12 px-5 font-semibold text-base rounded-lg transition-all duration-200 leading-tight truncate text-black flex items-center justify-center gap-2"

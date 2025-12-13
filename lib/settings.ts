@@ -12,6 +12,7 @@ export interface Settings {
   paymentType: "alias" | "cbu"
   bonusPercentage: number
   bonusEnabled: boolean
+  supportPhone: string
 }
 
 function getSupabaseClient() {
@@ -45,6 +46,7 @@ export async function getSettings(): Promise<Settings> {
       paymentType: data.payment_type,
       bonusPercentage: data.bonus_percentage ?? 25,
       bonusEnabled: data.bonus_enabled ?? true,
+      supportPhone: data.support_phone ?? "+541141624225",
     }
   } catch (error) {
     console.error("[Settings] getSettings error:", error)
@@ -65,6 +67,7 @@ export async function updateSettings(updates: Partial<Settings>): Promise<Settin
     if (updates.paymentType !== undefined) dbUpdates.payment_type = updates.paymentType
     if (updates.bonusPercentage !== undefined) dbUpdates.bonus_percentage = updates.bonusPercentage
     if (updates.bonusEnabled !== undefined) dbUpdates.bonus_enabled = updates.bonusEnabled
+    if (updates.supportPhone !== undefined) dbUpdates.support_phone = updates.supportPhone
 
     const { data, error } = await supabase.from("settings").update(dbUpdates).eq("id", 1).select().single()
 
@@ -86,6 +89,7 @@ export async function updateSettings(updates: Partial<Settings>): Promise<Settin
       paymentType: data.payment_type,
       bonusPercentage: data.bonus_percentage ?? 25,
       bonusEnabled: data.bonus_enabled ?? true,
+      supportPhone: data.support_phone ?? "+541141624225",
     }
   } catch (error) {
     console.error("[Settings] updateSettings error:", error)

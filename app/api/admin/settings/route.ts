@@ -29,6 +29,7 @@ export async function POST(request: Request) {
       paymentType,
       bonusPercentage,
       bonusEnabled,
+      supportPhone,
     } = body
 
     if (!pin || pin !== adminPin) {
@@ -94,6 +95,13 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "El estado del bono debe ser verdadero o falso" }, { status: 400 })
       }
       updates.bonusEnabled = bonusEnabled
+    }
+
+    if (supportPhone !== undefined) {
+      if (typeof supportPhone !== "string" || supportPhone.trim().length < 8) {
+        return NextResponse.json({ error: "El teléfono de soporte debe tener al menos 8 dígitos" }, { status: 400 })
+      }
+      updates.supportPhone = supportPhone.trim()
     }
 
     const updatedSettings = await updateSettings(updates)
