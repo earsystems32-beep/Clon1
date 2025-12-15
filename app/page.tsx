@@ -369,7 +369,7 @@ export default function Home() {
     const time = localStorage.getItem("eds_transfer_time") || "sin hora registrada"
     const montoFormateado = formatMontoArgentino(monto)
     const platform = localStorage.getItem("eds_platform") || ""
-    const platformName = platform === "g" ? "https://ganamos.sbs" : "No especificada"
+    const platformName = platform === "g" ? "https://ganamosnet.one/home" : "No especificada"
 
     const msg = `Hola, ya envié mi carga.\n\nUsuario: ${username}\nContraseña: ${password}\nQuiero jugar en: \n${platformName}\n\nTitular: ${titular}\nMonto: $${montoFormateado}\nHora de transferencia: ${time}\nAdjunto comprobante.`
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`
@@ -495,17 +495,20 @@ export default function Home() {
                 <div className="flex items-start gap-3">
                   <Hourglass className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
-                    <h3 className="font-bold text-white mb-1">Sin cronograma de pagos</h3>
-                    <p className="text-sm text-white/80 leading-relaxed">Los retiros se procesan de forma continua</p>
+                    <h3 className="font-bold text-white mb-1">Retiros programados</h3>
+                    <p className="text-sm text-white/80 leading-relaxed">
+                      Se habilitan hasta 2 retiros diarios, con un monto máximo de $125.000 por cada retiro.
+                    </p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
                   <DollarSign className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
-                    <h3 className="font-bold text-white mb-1">Retiros sin límite</h3>
+                    <h3 className="font-bold text-white mb-1">Límite diario de retiros</h3>
                     <p className="text-sm text-white/80 leading-relaxed">
-                      Podés retirar tus fondos las veces que quieras, en cualquier momento del día, las 24 horas.
+                      El total máximo disponible para retirar es de $250.000 cada 24 horas, independientemente de la
+                      cantidad de operaciones.
                     </p>
                   </div>
                 </div>
@@ -513,9 +516,10 @@ export default function Home() {
                 <div className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-[#22D3EE] shrink-0 mt-1" strokeWidth={2} />
                   <div>
-                    <h3 className="font-bold text-white mb-1">Disponibilidad inmediata</h3>
+                    <h3 className="font-bold text-white mb-1">Disponibilidad de acreditación</h3>
                     <p className="text-sm text-white/80 leading-relaxed">
-                      Los pagos se acreditan en el mismo día según la demanda y disponibilidad del soporte.
+                      Los pagos se procesan dentro del mismo día, sujetos a la demanda y a la disponibilidad del equipo
+                      de soporte.
                     </p>
                   </div>
                 </div>
@@ -585,7 +589,7 @@ export default function Home() {
                       textShadow: "0 2px 8px rgba(14, 165, 233, 0.4)",
                     }}
                   >
-                    SHARK
+                    {"LUX23"}
                   </h1>
                   <p className="text-lg md:text-xl text-muted-foreground font-normal text-center">
                     Creá tu usuario y empezá a jugar!
@@ -1067,7 +1071,7 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-3 pt-2">
                     <a
-                      href={`https://wa.me/${supportPhone.replace(/\+/g, "")}?text=Hola,%20me%20contacto%20desde%20la%20página%20REDvitto36%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?`}
+                      href={`https://wa.me/${supportPhone.replace(/\+/g, "")}?text=Hola,%20me%20contacto%20desde%20https://ganamosnet.one/home%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-liquid-glass max-w-[320px] min-w-[240px] w-full h-12 px-5 font-semibold text-base rounded-lg transition-all duration-200 leading-tight truncate text-black flex items-center justify-center gap-2"
