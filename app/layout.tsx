@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: "El de la Suerte",
+  title: "LUX23",
   description: "Creá tu usuario y empezá a jugar",
   generator: "v0.app",
 }

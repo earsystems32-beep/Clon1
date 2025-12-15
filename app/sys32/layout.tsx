@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Sistema - El de la Suerte",
+  title: "Sistema - LUX23",
   robots: {
     index: false,
     follow: false,

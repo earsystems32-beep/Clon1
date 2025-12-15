@@ -1,4 +1,4 @@
-# Sistema de Pagos - El de la Suerte
+# Sistema de Pagos - LUX23
 
 Sistema de generación de links de pago con panel de administración seguro.
 
