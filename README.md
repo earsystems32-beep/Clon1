@@ -56,10 +56,10 @@ Ver `SECURITY.md` y `SECURITY_CHECKLIST.md` para más detalles.
 
 ## Variables de Entorno Requeridas
 
-\`\`\`env
+```env
 ADMIN_PIN=tu_contraseña_segura_aquí
 ALLOWED_ORIGIN=https://tudominio.com (opcional)
-\`\`\`
+```
 
 ## Licencia
 

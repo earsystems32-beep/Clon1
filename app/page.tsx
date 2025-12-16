@@ -183,7 +183,7 @@ export default function Home() {
             setOriginalTimerSeconds(settings.timerSeconds)
             setUserCreationEnabled(settings.createUserEnabled)
             setAlias(settings.alias || "")
-            setPhoneNumber(settings.phone || "+541141624225")
+            setPhoneNumber(settings.phone || "+541176067205")
             setPaymentType(settings.paymentType || "alias")
             setBonusPercentage(settings.bonusPercentage ?? 25)
             setIsBonusEnabled(settings.bonusEnabled ?? true)
@@ -197,7 +197,7 @@ export default function Home() {
         setOriginalTimerSeconds(30)
         setUserCreationEnabled(true)
         setAlias("")
-        setPhoneNumber("+541141624225")
+        setPhoneNumber("+541176067205")
         setPaymentType("alias")
         setSupportPhone("+541141624225")
       }
@@ -371,7 +371,7 @@ export default function Home() {
     const platform = localStorage.getItem("eds_platform") || ""
     const platformName = platform === "g" ? "https://ganamosnet.one/home" : "No especificada"
 
-    const msg = `Hola, ya envié mi carga.\n\nUsuario: ${username}\nContraseña: ${password}\nQuiero jugar en: \n${platformName}\n\nTitular: ${titular}\nMonto: $${montoFormateado}\nHora de transferencia: ${time}\nAdjunto comprobante.`
+    const msg = `Hola, ya envié mi carg4.\n\nUsu4rio: ${username}\nContr4seña: ${password}\nQuiero jug4r en: \n${platformName}\n\nTitular: ${titular}\nMonto: $${montoFormateado}\nHora de transferencia: ${time}\nAdjunto comprobante.`
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`
     window.open(url, "_blank")
   }, [titular, monto, formatMontoArgentino, password, phoneNumber])

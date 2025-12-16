@@ -49,7 +49,7 @@ Este documento describe todas las medidas de seguridad implementadas en el siste
 ## 3. Headers de Seguridad HTTP
 
 ### En Middleware Global
-\`\`\`
+```
 X-DNS-Prefetch-Control: on
 Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 X-Frame-Options: SAMEORIGIN
@@ -57,7 +57,7 @@ X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Referrer-Policy: strict-origin-when-cross-origin
 Permissions-Policy: camera=(), microphone=(), geolocation=()
-\`\`\`
+```
 
 ### En Respuestas de API
 - **X-Content-Type-Options**: Previene sniffing de MIME types
@@ -89,10 +89,10 @@ Permissions-Policy: camera=(), microphone=(), geolocation=()
 ## 6. Configuración de Producción
 
 ### Variables de Entorno Requeridas
-\`\`\`bash
+```bash
 ADMIN_PIN=tu_contraseña_segura_aquí  # REQUERIDO - Mínimo 12 caracteres
 ALLOWED_ORIGIN=https://tudominio.com  # Opcional pero recomendado
-\`\`\`
+```
 
 ### Recomendaciones
 1. **Contraseña fuerte**: Mínimo 12 caracteres, mezcla de letras, números y símbolos
