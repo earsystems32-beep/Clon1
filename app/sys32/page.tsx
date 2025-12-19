@@ -15,8 +15,10 @@ const SUPPORT_CONTACTS = [
   { name: "Linea 1", phone: "541176067205" },
   { name: "Linea 2", phone: "541127214473" },
   { name: "Linea 3", phone: "541166848706" },
-  { name: "Linea 4", phone: "541141624225" },
-  { name: "Linea 5", phone: "541171132238" },
+  { name: "Linea 4", phone: "541176067761" },
+  { name: "Linea 5", phone: "541127419425" },
+  { name: "Linea 6", phone: "541171002343" },
+  { name: "Linea 7", phone: "541166891411" },
   { name: "Otro / Personalizado", phone: "" },
 ]
 

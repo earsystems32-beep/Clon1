@@ -227,7 +227,7 @@ export default function Home() {
   }, [])
 
   const isPlataformaValid = useCallback((value: string) => {
-    return value === "g" // Simplified platform logic to only support Ganamos
+    return value === "g" // Simplified platform logic to only support GoldNET
   }, [])
 
   const isFormValid = isApodoValid(apodo) && isDigitosValid(digitos) && isPlataformaValid(plataforma)
@@ -369,7 +369,7 @@ export default function Home() {
     const time = localStorage.getItem("eds_transfer_time") || "sin hora registrada"
     const montoFormateado = formatMontoArgentino(monto)
     const platform = localStorage.getItem("eds_platform") || ""
-    const platformName = platform === "g" ? "https://ganamosnet.one/home" : "No especificada"
+    const platformName = platform === "g" ? "https://goldnet.app/login.php" : "No especificada"
 
     const msg = `Hola, ya envié mi carg4.\n\nUsu4rio: ${username}\nContr4seña: ${password}\nQuiero jug4r en: \n${platformName}\n\nTitular: ${titular}\nMonto: $${montoFormateado}\nHora de transferencia: ${time}\nAdjunto comprobante.`
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(msg)}`
@@ -664,7 +664,8 @@ export default function Home() {
                           <SelectValue placeholder="Seleccioná una opción" />
                         </SelectTrigger>
                         <SelectContent className="z-[10000]">
-                          <SelectItem value="g">Ganamos</SelectItem>
+                          {/* Changed platform option to GoldNET */}
+                          <SelectItem value="g">GoldNET</SelectItem>
                         </SelectContent>
                       </Select>
                       {plataformaError && (
@@ -1071,7 +1072,7 @@ export default function Home() {
 
                   <div className="flex flex-col items-center gap-3 pt-2">
                     <a
-                      href={`https://wa.me/${supportPhone.replace(/\+/g, "")}?text=Hola,%20me%20contacto%20desde%20https://ganamosnet.one/home%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?`}
+                      href={`https://wa.me/${supportPhone.replace(/\+/g, "")}?text=Hola,%20me%20contacto%20desde%20https://goldnet.app/login.php%20por%20un%20reclamo%20o%20consulta%20de%20soporte.%20¿Me%20podrías%20ayudar?`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-liquid-glass max-w-[320px] min-w-[240px] w-full h-12 px-5 font-semibold text-base rounded-lg transition-all duration-200 leading-tight truncate text-black flex items-center justify-center gap-2"
