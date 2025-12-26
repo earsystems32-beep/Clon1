@@ -26,6 +26,16 @@ import {
   AlertTriangle,
 } from "lucide-react"
 
+const SUPPORT_CONTACTS = [
+  { name: "Linea 1", phone: "541176067205" },
+  { name: "Linea 2", phone: "541127214473" },
+  { name: "Linea 3", phone: "541166848706" },
+  { name: "Linea 4", phone: "541176067761" },
+  { name: "Linea 5", phone: "541127419425" },
+  { name: "Linea 6", phone: "541171002343" },
+  { name: "Linea 7", phone: "541166891411" },
+]
+
 export default function Home() {
   const [step, setStep] = useState(1)
   const [apodo, setApodo] = useState("")
@@ -60,6 +70,37 @@ export default function Home() {
   const [originalTimerSeconds, setOriginalTimerSeconds] = useState(30)
   const [supportPhone, setSupportPhone] = useState("+541141624225")
 
+  useEffect(() => {
+    const checkRotation = async () => {
+      try {
+        const response = await fetch("/api/rotation", {
+          cache: "no-store",
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          if (data.success && data.rotationEnabled) {
+            // Update phone number based on current line index
+            const currentLine = SUPPORT_CONTACTS[data.currentLineIndex]
+            if (currentLine) {
+              setPhoneNumber(currentLine.phone)
+            }
+          }
+        }
+      } catch (error) {
+        console.error("[v0] Error checking rotation:", error)
+      }
+    }
+
+    // Check rotation immediately on mount
+    checkRotation()
+
+    // Check rotation every minute
+    const rotationInterval = setInterval(checkRotation, 60000)
+
+    return () => clearInterval(rotationInterval)
+  }, [])
+
   // Separated config loading to only set timer when not in use
   useEffect(() => {
     const loadServerConfig = async () => {
@@ -72,7 +113,11 @@ export default function Home() {
           const data = await response.json()
           if (data.success && data.settings) {
             setAlias(data.settings.alias)
-            setPhoneNumber(data.settings.phone)
+
+            if (!data.settings.autoRotationEnabled) {
+              setPhoneNumber(data.settings.phone)
+            }
+
             setPaymentType(data.settings.paymentType)
             setUserCreationEnabled(data.settings.createUserEnabled ?? true)
             const timerValue = data.settings.timerSeconds ?? 30
@@ -183,7 +228,11 @@ export default function Home() {
             setOriginalTimerSeconds(settings.timerSeconds)
             setUserCreationEnabled(settings.createUserEnabled)
             setAlias(settings.alias || "")
-            setPhoneNumber(settings.phone || "+541176067205")
+
+            if (!settings.autoRotationEnabled) {
+              setPhoneNumber(settings.phone || "541176067205")
+            }
+
             setPaymentType(settings.paymentType || "alias")
             setBonusPercentage(settings.bonusPercentage ?? 25)
             setIsBonusEnabled(settings.bonusEnabled ?? true)
@@ -197,7 +246,7 @@ export default function Home() {
         setOriginalTimerSeconds(30)
         setUserCreationEnabled(true)
         setAlias("")
-        setPhoneNumber("+541176067205")
+        setPhoneNumber("541176067205")
         setPaymentType("alias")
         setSupportPhone("+541141624225")
       }

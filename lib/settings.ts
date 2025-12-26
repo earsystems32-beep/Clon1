@@ -13,6 +13,10 @@ export interface Settings {
   bonusPercentage: number
   bonusEnabled: boolean
   supportPhone: string
+  autoRotationEnabled: boolean
+  rotationIntervalMinutes: number
+  currentLineIndex: number
+  lastRotationTime: string
 }
 
 function getSupabaseClient() {
@@ -47,6 +51,10 @@ export async function getSettings(): Promise<Settings> {
       bonusPercentage: data.bonus_percentage ?? 25,
       bonusEnabled: data.bonus_enabled ?? true,
       supportPhone: data.support_phone ?? "+541141624225",
+      autoRotationEnabled: data.auto_rotation_enabled ?? false,
+      rotationIntervalMinutes: data.rotation_interval_minutes ?? 60,
+      currentLineIndex: data.current_line_index ?? 0,
+      lastRotationTime: data.last_rotation_time ?? new Date().toISOString(),
     }
   } catch (error) {
     console.error("[Settings] getSettings error:", error)
@@ -68,6 +76,11 @@ export async function updateSettings(updates: Partial<Settings>): Promise<Settin
     if (updates.bonusPercentage !== undefined) dbUpdates.bonus_percentage = updates.bonusPercentage
     if (updates.bonusEnabled !== undefined) dbUpdates.bonus_enabled = updates.bonusEnabled
     if (updates.supportPhone !== undefined) dbUpdates.support_phone = updates.supportPhone
+    if (updates.autoRotationEnabled !== undefined) dbUpdates.auto_rotation_enabled = updates.autoRotationEnabled
+    if (updates.rotationIntervalMinutes !== undefined)
+      dbUpdates.rotation_interval_minutes = updates.rotationIntervalMinutes
+    if (updates.currentLineIndex !== undefined) dbUpdates.current_line_index = updates.currentLineIndex
+    if (updates.lastRotationTime !== undefined) dbUpdates.last_rotation_time = updates.lastRotationTime
 
     const { data, error } = await supabase.from("settings").update(dbUpdates).eq("id", 1).select().single()
 
@@ -90,6 +103,10 @@ export async function updateSettings(updates: Partial<Settings>): Promise<Settin
       bonusPercentage: data.bonus_percentage ?? 25,
       bonusEnabled: data.bonus_enabled ?? true,
       supportPhone: data.support_phone ?? "+541141624225",
+      autoRotationEnabled: data.auto_rotation_enabled ?? false,
+      rotationIntervalMinutes: data.rotation_interval_minutes ?? 60,
+      currentLineIndex: data.current_line_index ?? 0,
+      lastRotationTime: data.last_rotation_time ?? new Date().toISOString(),
     }
   } catch (error) {
     console.error("[Settings] updateSettings error:", error)
