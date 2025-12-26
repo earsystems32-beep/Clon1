@@ -30,9 +30,6 @@ export async function POST(request: Request) {
       bonusPercentage,
       bonusEnabled,
       supportPhone,
-      autoRotationEnabled,
-      rotationIntervalMinutes,
-      currentLineIndex,
     } = body
 
     if (!pin || pin !== adminPin) {
@@ -105,38 +102,6 @@ export async function POST(request: Request) {
         return NextResponse.json({ error: "El teléfono de soporte debe tener al menos 8 dígitos" }, { status: 400 })
       }
       updates.supportPhone = supportPhone.trim()
-    }
-
-    if (autoRotationEnabled !== undefined) {
-      if (typeof autoRotationEnabled !== "boolean") {
-        return NextResponse.json(
-          { error: "El estado de rotación automática debe ser verdadero o falso" },
-          { status: 400 },
-        )
-      }
-      updates.autoRotationEnabled = autoRotationEnabled
-    }
-
-    if (rotationIntervalMinutes !== undefined) {
-      if (
-        typeof rotationIntervalMinutes !== "number" ||
-        rotationIntervalMinutes < 1 ||
-        rotationIntervalMinutes > 1440
-      ) {
-        return NextResponse.json(
-          { error: "El intervalo de rotación debe estar entre 1 y 1440 minutos" },
-          { status: 400 },
-        )
-      }
-      updates.rotationIntervalMinutes = rotationIntervalMinutes
-    }
-
-    if (currentLineIndex !== undefined) {
-      if (typeof currentLineIndex !== "number" || currentLineIndex < 0 || currentLineIndex > 6) {
-        return NextResponse.json({ error: "El índice de línea debe estar entre 0 y 6" }, { status: 400 })
-      }
-      updates.currentLineIndex = currentLineIndex
-      updates.lastRotationTime = new Date().toISOString()
     }
 
     const updatedSettings = await updateSettings(updates)
