@@ -327,7 +327,14 @@ export default function Home() {
 
       const apodoSan = sanitizeName(apodo)
       const apodoCapitalized = apodoSan.charAt(0).toUpperCase() + apodoSan.slice(1)
-      const generatedUser = `${apodoCapitalized}${digitos}${plataforma}01`
+
+      // Calculate max length for apodo: 14 total - 4 digits - 1 letter 't' = 9 characters max for apodo
+      const maxApodoLength = 9
+      const truncatedApodo = apodoCapitalized.slice(0, maxApodoLength)
+
+      // New format: [Apodo][4Digits]t (max 14 characters)
+      const generatedUser = `${truncatedApodo}${digitos}t`
+
       setUsuario(generatedUser)
       localStorage.setItem("eds_username", generatedUser)
       localStorage.setItem("eds_platform", plataforma)
